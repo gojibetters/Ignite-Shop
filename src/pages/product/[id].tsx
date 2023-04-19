@@ -7,18 +7,42 @@ import {
   ProductContainer,
   ProductDetails,
 } from '@/styles/pages/product'
+import axios from 'axios'
+import { useState } from 'react'
 
 interface ProductProps {
   product: {
     id: string
     name: string
     imageUrl: string
+    defaultPriceId: string
     price: string
     description: string
   }
 }
 
 export default function Product({ product }: ProductProps) {
+  const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] =
+    useState(false)
+
+  async function handleBuyProduct() {
+    try {
+      setIsCreatingCheckoutSession(true)
+      const response = await axios.post('/api/checkout', {
+        priceId: product.defaultPriceId,
+      })
+
+      const { checkoutUrl } = response.data
+
+      window.location.href = checkoutUrl
+    } catch (error) {
+      // Conectar com uma ferramenta de observabilidade (Datadog / Sentry)
+
+      setIsCreatingCheckoutSession(false)
+      console.error(error)
+    }
+  }
+
   return (
     <ProductContainer>
       <ImageContainer>
@@ -31,7 +55,9 @@ export default function Product({ product }: ProductProps) {
 
         <p>{product.description}</p>
 
-        <button>Comprar agora</button>
+        <button disabled={isCreatingCheckoutSession} onClick={handleBuyProduct}>
+          Comprar agora
+        </button>
       </ProductDetails>
     </ProductContainer>
   )
@@ -54,6 +80,7 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async ({
   })
 
   const defaultPrice = product.default_price as Stripe.Price
+
   const price = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
@@ -65,6 +92,7 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async ({
         id: product.id,
         name: product.name,
         imageUrl: product.images[0],
+        defaultPriceId: defaultPrice.id,
         price,
         description: product.description,
       },
