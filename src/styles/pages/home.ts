@@ -6,11 +6,51 @@ export const HomeContainer = styled('main', {
   background: '$gray900',
 
   width: '100%',
-  maxWidth: 'calc(100vw - (100vw - 1180px) / 2)',
-
-  minHeight: '41rem',
+  minHeight: '50rem',
 
   marginLeft: 'auto',
+
+  position: 'relative',
+
+  button: {
+    border: 'none',
+    cursor: 'pointer',
+
+    position: 'absolute',
+
+    zIndex: 10,
+
+    height: '100%',
+
+    '&[data-side=left]': {
+      left: 0,
+
+      padding: '0 4.5rem 0 1rem',
+
+      background:
+        'linear-gradient(90deg, rgba(18, 18, 20, 0.75) 0%, rgba(18, 18, 20, 0) 100%)',
+    },
+
+    '&[data-side=right]': {
+      left: 'auto',
+      right: 0,
+
+      padding: '0 1rem 0 4.5rem',
+
+      background:
+        'linear-gradient(90deg, rgba(18, 18, 20, 0) 0%, rgba(18, 18, 20, 0.75) 100%)',
+    },
+
+    '&:disabled': {
+      backgroundColor: 'rgba(255, 255, 255, 0.5)',
+      cursor: 'not-allowed',
+    },
+  },
+})
+
+export const ProductContainer = styled('div', {
+  display: 'flex',
+  gap: '3rem',
 })
 
 export const Product = styled('div', {
@@ -19,6 +59,8 @@ export const Product = styled('div', {
   cursor: 'pointer',
   position: 'relative',
   overflow: 'hidden',
+
+  width: '52.2rem',
 
   display: 'flex',
   alignItems: 'center',

@@ -1,15 +1,18 @@
 import { GetStaticProps } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
+import Head from 'next/head'
 
-import { stripe } from '@/lib/stripe'
+import { ArrowLeft, ArrowRight } from 'phosphor-react'
+
 import Stripe from 'stripe'
+import { stripe } from '@/lib/stripe'
 
 import { useKeenSlider } from 'keen-slider/react'
 import 'keen-slider/keen-slider.min.css'
 
-import { HomeContainer, Product } from '@/styles/pages/home'
-import Link from 'next/link'
-import Head from 'next/head'
+import { HomeContainer, Product, ProductContainer } from '@/styles/pages/home'
+import { useState } from 'react'
 
 interface HomeProps {
   products: {
@@ -21,12 +24,21 @@ interface HomeProps {
 }
 
 export default function Home({ products }: HomeProps) {
-  const [sliderRef] = useKeenSlider({
+  const [sliderRef, instanceRef] = useKeenSlider({
+    mode: 'free-snap',
     slides: {
-      perView: 3,
-      spacing: 48,
+      origin: 'center',
+      perView: 2,
+    },
+    slideChanged(slider) {
+      setCurrentSlide(slider.track.details.rel)
     },
   })
+
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  const isFirstSlide = !(currentSlide === 0)
+  const isLastSlide = !(currentSlide === products.length - 1)
 
   return (
     <>
@@ -34,30 +46,44 @@ export default function Home({ products }: HomeProps) {
         <title>Home - Ignite Shop</title>
       </Head>
 
-      <HomeContainer ref={sliderRef} className="keen-slider">
-        {products.map((product) => {
-          return (
-            <Link
-              href={`/product/${product.id}`}
-              key={product.id}
-              prefetch={false}
-            >
-              <Product className="keen-slider__slide">
-                <Image
-                  src={product.imageUrl}
-                  alt={product.name}
-                  width={520}
-                  height={480}
-                />
+      <HomeContainer className="navigation-wrapper">
+        {isFirstSlide && (
+          <button data-side="left" onClick={() => instanceRef.current?.prev()}>
+            <ArrowLeft size={48} color="#C4C4CC" />
+          </button>
+        )}
 
-                <footer>
-                  <strong>{product.name}</strong>
-                  <span>{product.price}</span>
-                </footer>
-              </Product>
-            </Link>
-          )
-        })}
+        <ProductContainer ref={sliderRef} className="keen-slider">
+          {products.map((product, index) => {
+            return (
+              <Link
+                href={`/product/${product.id}`}
+                key={product.id}
+                prefetch={false}
+              >
+                <Product className={`keen-slider__slide number-slide${index}`}>
+                  <Image
+                    src={product.imageUrl}
+                    alt={product.name}
+                    width={520}
+                    height={480}
+                  />
+
+                  <footer>
+                    <strong>{product.name}</strong>
+                    <span>{product.price}</span>
+                  </footer>
+                </Product>
+              </Link>
+            )
+          })}
+        </ProductContainer>
+
+        {isLastSlide ? (
+          <button data-side="right" onClick={() => instanceRef.current?.next()}>
+            <ArrowRight size={48} color="#C4C4CC" />
+          </button>
+        ) : null}
       </HomeContainer>
     </>
   )
