@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Head from 'next/head'
 
-import { ArrowLeft, ArrowRight } from 'phosphor-react'
+import { ArrowLeft, ArrowRight, ShoppingCart } from 'phosphor-react'
 
 import Stripe from 'stripe'
 import { stripe } from '@/lib/stripe'
@@ -11,7 +11,13 @@ import { stripe } from '@/lib/stripe'
 import { useKeenSlider } from 'keen-slider/react'
 import 'keen-slider/keen-slider.min.css'
 
-import { HomeContainer, Product, ProductContainer } from '@/styles/pages/home'
+import {
+  IconContainer,
+  HomeContainer,
+  Product,
+  ProductContainer,
+  InformationContainer,
+} from '@/styles/pages/home'
 import { useState } from 'react'
 
 interface HomeProps {
@@ -28,7 +34,8 @@ export default function Home({ products }: HomeProps) {
     mode: 'free-snap',
     slides: {
       origin: 'center',
-      perView: 2,
+      perView: 2.15,
+      spacing: 48,
     },
     slideChanged(slider) {
       setCurrentSlide(slider.track.details.rel)
@@ -54,29 +61,32 @@ export default function Home({ products }: HomeProps) {
         )}
 
         <ProductContainer ref={sliderRef} className="keen-slider">
-          {products.map((product, index) => {
-            return (
-              <Link
-                href={`/product/${product.id}`}
-                key={product.id}
-                prefetch={false}
-              >
-                <Product className={`keen-slider__slide number-slide${index}`}>
-                  <Image
-                    src={product.imageUrl}
-                    alt={product.name}
-                    width={520}
-                    height={480}
-                  />
+          {products.map((product, index) => (
+            <Product
+              className={`keen-slider__slide number-slide${index}`}
+              key={product.id}
+            >
+              <Image
+                src={product.imageUrl}
+                alt={product.name}
+                width={520}
+                height={480}
+              />
 
-                  <footer>
+              <Link href={`/product/${product.id}`}>
+                <footer>
+                  <InformationContainer>
                     <strong>{product.name}</strong>
                     <span>{product.price}</span>
-                  </footer>
-                </Product>
+                  </InformationContainer>
+
+                  <IconContainer>
+                    <ShoppingCart size={32} color="#FFF" weight="bold" />
+                  </IconContainer>
+                </footer>
               </Link>
-            )
-          })}
+            </Product>
+          ))}
         </ProductContainer>
 
         {isLastSlide ? (

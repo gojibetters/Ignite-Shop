@@ -6,7 +6,8 @@ export const HomeContainer = styled('main', {
   background: '$gray900',
 
   width: '100%',
-  minHeight: '50rem',
+  height: '47rem',
+  maxHeight: 'calc(90vh - 7.75rem)',
 
   marginLeft: 'auto',
 
@@ -29,6 +30,11 @@ export const HomeContainer = styled('main', {
 
       background:
         'linear-gradient(90deg, rgba(18, 18, 20, 0.75) 0%, rgba(18, 18, 20, 0) 100%)',
+
+      '&:hover': {
+        background:
+          'linear-gradient(90deg, rgba(7, 7, 7, 0.75) 0%, rgba(18, 18, 20, 0) 100%)',
+      },
     },
 
     '&[data-side=right]': {
@@ -39,6 +45,11 @@ export const HomeContainer = styled('main', {
 
       background:
         'linear-gradient(90deg, rgba(18, 18, 20, 0) 0%, rgba(18, 18, 20, 0.75) 100%)',
+
+      '&:hover': {
+        background:
+          'linear-gradient(90deg, rgba(18, 18, 20, 0) 0%, rgba(7, 7, 7, 0.75) 100%)',
+      },
     },
 
     '&:disabled': {
@@ -50,13 +61,11 @@ export const HomeContainer = styled('main', {
 
 export const ProductContainer = styled('div', {
   display: 'flex',
-  gap: '3rem',
 })
 
 export const Product = styled('div', {
   background: 'linear-gradient(100deg, #1ea483 0%, #7465d4 100% )',
   borderRadius: 8,
-  cursor: 'pointer',
   position: 'relative',
   overflow: 'hidden',
 
@@ -88,17 +97,6 @@ export const Product = styled('div', {
     transform: 'translateY(110%)',
     opacity: 0,
     transition: 'all 0.2s ease-in-out',
-
-    strong: {
-      fontSize: '$lg',
-      color: '$gray100',
-    },
-
-    span: {
-      fontSize: '$xl',
-      fontWeight: 'bold',
-      color: '$green300',
-    },
   },
 
   '&:hover': {
@@ -109,4 +107,39 @@ export const Product = styled('div', {
   },
 })
 
-export const Footer = styled('div', {})
+export const Footer = styled('footer', {})
+
+export const InformationContainer = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+
+  strong: {
+    fontSize: '$lg',
+    color: '$gray100',
+  },
+
+  span: {
+    fontSize: '$xl',
+    fontWeight: 'bold',
+    color: '$green300',
+  },
+})
+
+export const IconContainer = styled('div', {
+  backgroundColor: '$green500',
+  padding: '0.75rem',
+  borderRadius: 6,
+
+  display: 'flex',
+  alignItems: 'center',
+
+  '&:hover': {
+    backgroundColor: '$green300',
+  },
+})
+
+export const CheckoutContainer = styled('div', {})
+
+export const Checkout = styled('div', {})
+
+export const CheckoutInformation = styled('div', {})
