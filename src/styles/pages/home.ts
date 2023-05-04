@@ -64,7 +64,6 @@ export const ProductContainer = styled('div', {
 })
 
 export const Product = styled('div', {
-  background: 'linear-gradient(100deg, #1ea483 0%, #7465d4 100% )',
   borderRadius: 8,
   position: 'relative',
   overflow: 'hidden',
@@ -74,6 +73,14 @@ export const Product = styled('div', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+
+  '&[data-background=direct]': {
+    background: 'linear-gradient(100deg, #1ea483 0%, #7465d4 100% )',
+  },
+
+  '&[data-background=inverted]': {
+    background: 'linear-gradient(100deg, #7465d4 0%, #1ea483 100% )',
+  },
 
   img: {
     objectFit: 'cover',
@@ -100,6 +107,8 @@ export const Product = styled('div', {
   },
 
   '&:hover': {
+    boxShadow: '0px 0px 48px 0px rgba(0, 0, 0, 0.9)',
+
     footer: {
       transform: 'translateY(0%)',
       opacity: 1,

@@ -63,6 +63,7 @@ export default function Home({ products }: HomeProps) {
         <ProductContainer ref={sliderRef} className="keen-slider">
           {products.map((product, index) => (
             <Product
+              data-background={index % 2 ? 'inverted' : 'direct'}
               className={`keen-slider__slide number-slide${index}`}
               key={product.id}
             >
