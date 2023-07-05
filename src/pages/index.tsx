@@ -17,6 +17,8 @@ import {
   Product,
   ProductContainer,
   InformationContainer,
+  Arrow,
+  Footer,
 } from '@/styles/pages/home'
 import { useState } from 'react'
 
@@ -44,6 +46,24 @@ export default function Home({ products }: HomeProps) {
 
   const [currentSlide, setCurrentSlide] = useState(0)
 
+  // async function handleBuyProduct() {
+  //   try {
+  //     setIsCreatingCheckoutSession(true)
+  //     const response = await axios.post('/api/checkout', {
+  //       priceId: product.defaultPriceId,
+  //     })
+
+  //     const { checkoutUrl } = response.data
+
+  //     window.location.href = checkoutUrl
+  //   } catch (error) {
+  //     // Conectar com uma ferramenta de observabilidade (Datadog / Sentry)
+
+  //     setIsCreatingCheckoutSession(false)
+  //     console.error(error)
+  //   }
+  // }
+
   const isFirstSlide = !(currentSlide === 0)
   const isLastSlide = !(currentSlide === products.length - 1)
 
@@ -55,17 +75,17 @@ export default function Home({ products }: HomeProps) {
 
       <HomeContainer className="navigation-wrapper">
         {isFirstSlide && (
-          <button data-side="left" onClick={() => instanceRef.current?.prev()}>
+          <Arrow data-side="left" onClick={() => instanceRef.current?.prev()}>
             <ArrowLeft size={48} color="#C4C4CC" />
-          </button>
+          </Arrow>
         )}
 
         <ProductContainer ref={sliderRef} className="keen-slider">
           {products.map((product, index) => (
             <Product
-              data-background={index % 2 ? 'inverted' : 'direct'}
-              className={`keen-slider__slide number-slide${index}`}
               key={product.id}
+              className={`keen-slider__slide number-slide${index}`}
+              data-background={index % 2 ? 'inverted' : 'direct'}
             >
               <Image
                 src={product.imageUrl}
@@ -75,7 +95,7 @@ export default function Home({ products }: HomeProps) {
               />
 
               <Link href={`/product/${product.id}`}>
-                <footer>
+                <Footer>
                   <InformationContainer>
                     <strong>{product.name}</strong>
                     <span>{product.price}</span>
@@ -84,16 +104,16 @@ export default function Home({ products }: HomeProps) {
                   <IconContainer>
                     <ShoppingCart size={32} color="#FFF" weight="bold" />
                   </IconContainer>
-                </footer>
+                </Footer>
               </Link>
             </Product>
           ))}
         </ProductContainer>
 
         {isLastSlide ? (
-          <button data-side="right" onClick={() => instanceRef.current?.next()}>
+          <Arrow data-side="right" onClick={() => instanceRef.current?.next()}>
             <ArrowRight size={48} color="#C4C4CC" />
-          </button>
+          </Arrow>
         ) : null}
       </HomeContainer>
     </>

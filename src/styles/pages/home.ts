@@ -12,50 +12,50 @@ export const HomeContainer = styled('main', {
   marginLeft: 'auto',
 
   position: 'relative',
+})
 
-  button: {
-    border: 'none',
-    cursor: 'pointer',
+export const Arrow = styled('button', {
+  border: 'none',
+  cursor: 'pointer',
 
-    position: 'absolute',
+  position: 'absolute',
 
-    zIndex: 10,
+  zIndex: 10,
 
-    height: '100%',
+  height: '100%',
 
-    '&[data-side=left]': {
-      left: 0,
+  '&[data-side=left]': {
+    left: 0,
 
-      padding: '0 4.5rem 0 1rem',
+    padding: '0 4.5rem 0 1rem',
 
+    background:
+      'linear-gradient(90deg, rgba(18, 18, 20, 0.75) 0%, rgba(18, 18, 20, 0) 100%)',
+
+    '&:hover': {
       background:
-        'linear-gradient(90deg, rgba(18, 18, 20, 0.75) 0%, rgba(18, 18, 20, 0) 100%)',
-
-      '&:hover': {
-        background:
-          'linear-gradient(90deg, rgba(7, 7, 7, 0.75) 0%, rgba(18, 18, 20, 0) 100%)',
-      },
+        'linear-gradient(90deg, rgba(7, 7, 7, 0.75) 0%, rgba(18, 18, 20, 0) 100%)',
     },
+  },
 
-    '&[data-side=right]': {
-      left: 'auto',
-      right: 0,
+  '&[data-side=right]': {
+    left: 'auto',
+    right: 0,
 
-      padding: '0 1rem 0 4.5rem',
+    padding: '0 1rem 0 4.5rem',
 
+    background:
+      'linear-gradient(90deg, rgba(18, 18, 20, 0) 0%, rgba(18, 18, 20, 0.75) 100%)',
+
+    '&:hover': {
       background:
-        'linear-gradient(90deg, rgba(18, 18, 20, 0) 0%, rgba(18, 18, 20, 0.75) 100%)',
-
-      '&:hover': {
-        background:
-          'linear-gradient(90deg, rgba(18, 18, 20, 0) 0%, rgba(7, 7, 7, 0.75) 100%)',
-      },
+        'linear-gradient(90deg, rgba(18, 18, 20, 0) 0%, rgba(7, 7, 7, 0.75) 100%)',
     },
+  },
 
-    '&:disabled': {
-      backgroundColor: 'rgba(255, 255, 255, 0.5)',
-      cursor: 'not-allowed',
-    },
+  '&:disabled': {
+    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+    cursor: 'not-allowed',
   },
 })
 
@@ -74,36 +74,16 @@ export const Product = styled('div', {
   alignItems: 'center',
   justifyContent: 'center',
 
+  img: {
+    objectFit: 'cover',
+  },
+
   '&[data-background=direct]': {
     background: 'linear-gradient(100deg, #1ea483 0%, #7465d4 100% )',
   },
 
   '&[data-background=inverted]': {
     background: 'linear-gradient(100deg, #7465d4 0%, #1ea483 100% )',
-  },
-
-  img: {
-    objectFit: 'cover',
-  },
-
-  footer: {
-    position: 'absolute',
-    bottom: '0.25rem',
-    left: '0.25rem',
-    right: '0.25rem',
-    padding: '2rem',
-
-    borderRadius: 6,
-
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-
-    background: 'rgba(0, 0, 0, 0.6)',
-
-    transform: 'translateY(110%)',
-    opacity: 0,
-    transition: 'all 0.2s ease-in-out',
   },
 
   '&:hover': {
@@ -116,7 +96,25 @@ export const Product = styled('div', {
   },
 })
 
-export const Footer = styled('footer', {})
+export const Footer = styled('footer', {
+  position: 'absolute',
+  bottom: '0.25rem',
+  left: '0.25rem',
+  right: '0.25rem',
+  padding: '2rem',
+
+  borderRadius: 6,
+
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+
+  background: 'rgba(0, 0, 0, 0.6)',
+
+  transform: 'translateY(110%)',
+  opacity: 0,
+  transition: 'all 0.2s ease-in-out',
+})
 
 export const InformationContainer = styled('div', {
   display: 'flex',
@@ -134,7 +132,10 @@ export const InformationContainer = styled('div', {
   },
 })
 
-export const IconContainer = styled('div', {
+export const IconContainer = styled('button', {
+  border: 0,
+  cursor: 'pointer',
+
   backgroundColor: '$green500',
   padding: '0.75rem',
   borderRadius: 6,

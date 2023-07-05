@@ -29,13 +29,9 @@ export default function Product({ product }: ProductProps) {
   async function handleBuyProduct() {
     try {
       setIsCreatingCheckoutSession(true)
-      const response = await axios.post('/api/checkout', {
+      await axios.post('/api/checkout', {
         priceId: product.defaultPriceId,
       })
-
-      const { checkoutUrl } = response.data
-
-      window.location.href = checkoutUrl
     } catch (error) {
       // Conectar com uma ferramenta de observabilidade (Datadog / Sentry)
 
