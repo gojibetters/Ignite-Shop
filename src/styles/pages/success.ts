@@ -10,12 +10,12 @@ export const SuccessContainer = styled('main', {
 
   h1: {
     fontSize: '2xl',
-    color: '$gray100',
+    color: '$grey100',
   },
 
   p: {
     fontSize: 'xl',
-    color: '$gray300',
+    color: '$grey300',
     maxWidth: 560,
     textAlign: 'center',
     marginTop: '2rem',

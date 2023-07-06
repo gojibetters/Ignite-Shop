@@ -19,6 +19,7 @@ import {
   InformationContainer,
   Arrow,
   Footer,
+  Container,
 } from '@/styles/pages/home'
 import { useState } from 'react'
 
@@ -68,7 +69,7 @@ export default function Home({ products }: HomeProps) {
   const isLastSlide = !(currentSlide === products.length - 1)
 
   return (
-    <>
+    <Container>
       <Head>
         <title>Home - Ignite Shop</title>
       </Head>
@@ -116,7 +117,7 @@ export default function Home({ products }: HomeProps) {
           </Arrow>
         ) : null}
       </HomeContainer>
-    </>
+    </Container>
   )
 }
 

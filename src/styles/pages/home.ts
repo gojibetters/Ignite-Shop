@@ -1,9 +1,11 @@
 import { styled } from '..'
 
+export const Container = styled('div', {})
+
 export const HomeContainer = styled('main', {
   display: 'flex',
 
-  background: '$gray900',
+  background: '$grey900',
 
   width: '100%',
   height: '47rem',
@@ -122,7 +124,7 @@ export const InformationContainer = styled('div', {
 
   strong: {
     fontSize: '$lg',
-    color: '$gray100',
+    color: '$grey100',
   },
 
   span: {

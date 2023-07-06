@@ -16,12 +16,3 @@ export const Container = styled('header', {
     objectFit: 'cover',
   },
 })
-
-export const ButtonContainer = styled('div', {
-  backgroundColor: '#202024',
-  padding: '0.75rem',
-  borderRadius: 6,
-
-  display: 'flex',
-  alignItems: 'center',
-})
