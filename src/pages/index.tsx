@@ -45,6 +45,8 @@ export default function Home({ products }: HomeProps) {
     },
   })
 
+  console.log(products)
+
   const [currentSlide, setCurrentSlide] = useState(0)
 
   // async function handleBuyProduct() {

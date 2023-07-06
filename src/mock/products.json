@@ -1,0 +1,26 @@
+[
+  {
+      "id": "prod_Nh9ss9LS0CueKt",
+      "name": "Camiseta Maratona Explorer v2",
+      "imageUrl": "https://files.stripe.com/links/MDB8YWNjdF8xTXZsTWRIWGdRb0N2eVpFfGZsX3Rlc3RfYUh0dm1KakVzUUVjTXlVY3FOTnJoQ1Zk00W5SXdqcX",
+      "price": "R$ 79,90"
+  },
+  {
+      "id": "prod_Nh9ruouzzoQvkN",
+      "name": "Camiseta Ignite Lab",
+      "imageUrl": "https://files.stripe.com/links/MDB8YWNjdF8xTXZsTWRIWGdRb0N2eVpFfGZsX3Rlc3RfbW92YVFiVXpiTGVzNE5NRWtFcUFCNEhD00xwnus0KD",
+      "price": "R$ 99,90"
+  },
+  {
+      "id": "prod_Nh9qtCw8CjKdNJ",
+      "name": "Camiseta Igniter Abord",
+      "imageUrl": "https://files.stripe.com/links/MDB8YWNjdF8xTXZsTWRIWGdRb0N2eVpFfGZsX3Rlc3RfZkVjNDREc09yU2RKREw0bVJCQURKS1d200H7LPRcNt",
+      "price": "R$ 89,90"
+  },
+  {
+      "id": "prod_Nh9pn8EQb9p0fL",
+      "name": "Camiseta Maratona Explorer",
+      "imageUrl": "https://files.stripe.com/links/MDB8YWNjdF8xTXZsTWRIWGdRb0N2eVpFfGZsX3Rlc3RfVFg4cHlEa3kwY2twYXRmbkV4eTZJMDlm00EsyFx0hr",
+      "price": "R$ 79,90"
+  }
+]

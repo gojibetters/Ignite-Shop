@@ -24,28 +24,7 @@ import {
   TotalValue,
 } from './style'
 
-import img from '@/assets/Variant6.png'
-
-const products = [
-  {
-    id: 0,
-    name: 'Camiseta Beyond the Limits',
-    price: 'R$ 79,90',
-    img,
-  },
-  {
-    id: 1,
-    name: 'Camiseta Limits',
-    price: 'R$ 72,90',
-    img,
-  },
-  {
-    id: 2,
-    name: 'Camiseta Beyond the Stars',
-    price: 'R$ 71,90',
-    img,
-  },
-]
+import products from '@/mock/products.json'
 
 export default function Checkout() {
   return (
@@ -68,7 +47,7 @@ export default function Checkout() {
                 products.map((product) => (
                   <Product key={product.id}>
                     <ProductImage
-                      src={product.img}
+                      src={product.imageUrl}
                       alt=""
                       height={93}
                       width={100}
