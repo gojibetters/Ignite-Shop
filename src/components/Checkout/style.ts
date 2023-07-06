@@ -1,4 +1,5 @@
 import { styled } from '@/styles'
+import Image from 'next/image'
 
 export const CheckoutContainer = styled('div', {
   display: 'flex',
@@ -7,12 +8,10 @@ export const CheckoutContainer = styled('div', {
   maxWidth: '100%',
 
   margin: '2.9375rem 1.4375rem 1.4375rem',
+})
 
-  span: {
-    '&:first-child': {
-      fontSize: '$xl',
-    },
-  },
+export const Title = styled('span', {
+  fontSize: '$xl',
 })
 
 export const CheckoutProducts = styled('div', {
@@ -26,6 +25,40 @@ export const CheckoutProducts = styled('div', {
   overflowY: 'auto',
 
   marginTop: '2rem',
+})
+
+export const Product = styled('div', {
+  display: 'flex',
+
+  gap: '1.25rem',
+})
+
+export const ProductImage = styled(Image, {
+  background: 'linear-gradient(100deg, #1ea483 0%, #7465d4 100% )',
+
+  borderRadius: 8,
+})
+
+export const ProductResume = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '0.5rem',
+
+  span: {
+    fontSize: '$md',
+  },
+
+  button: {
+    background: 'transparent',
+    color: '$green500',
+    border: 0,
+
+    fontSize: '$nl',
+    textDecoration: 'underline',
+    textAlign: 'start',
+
+    cursor: 'pointer',
+  },
 })
 
 export const CheckoutResume = styled('div', {
