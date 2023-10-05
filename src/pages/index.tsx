@@ -21,9 +21,10 @@ import {
 } from '@/styles/pages/home'
 
 export default function Home({ products }: HomeProps) {
-  const { instanceRef, isFirstSlide, isLastSlide, sliderRef } = useHome({
-    products,
-  })
+  const { sendToCheckout, instanceRef, isFirstSlide, isLastSlide, sliderRef } =
+    useHome({
+      products,
+    })
 
   return (
     <Container>
@@ -43,7 +44,7 @@ export default function Home({ products }: HomeProps) {
             <Product
               key={product.id}
               className={`keen-slider__slide number-slide${index}`}
-              data-background={index % 2 ? 'inverted' : 'direct'}
+              backgroundFade={index % 2 === 0}
             >
               <Image
                 src={product.imageUrl}
@@ -52,18 +53,22 @@ export default function Home({ products }: HomeProps) {
                 height={480}
               />
 
-              <Link href={`/product/${product.id}`}>
-                <Footer>
+              <Footer>
+                <Link href={`/product/${product.id}`}>
                   <InformationContainer>
                     <strong>{product.name}</strong>
                     <span>{product.price}</span>
                   </InformationContainer>
+                </Link>
 
-                  <IconContainer>
-                    <ShoppingCart size={32} color="#FFF" weight="bold" />
-                  </IconContainer>
-                </Footer>
-              </Link>
+                <IconContainer
+                  onClick={() => {
+                    sendToCheckout.mutate()
+                  }}
+                >
+                  <ShoppingCart size={32} color="#FFF" weight="bold" />
+                </IconContainer>
+              </Footer>
             </Product>
           ))}
         </ProductContainer>

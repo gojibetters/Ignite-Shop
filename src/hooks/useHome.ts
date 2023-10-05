@@ -4,6 +4,8 @@ import Stripe from 'stripe'
 import { useKeenSlider } from 'keen-slider/react'
 import { HomeProps } from '@/pages/index.type'
 import { stripe } from '@/lib/stripe'
+import { useMutation, useQuery } from '@tanstack/react-query'
+import axios from 'axios'
 
 export const getStaticProps: GetStaticProps = async () => {
   const response = await stripe.products.list({
@@ -44,6 +46,15 @@ export function useHome({ products }: HomeProps) {
     },
   })
 
+  const query = useQuery({
+    queryKey: ['sendToCheckout'],
+    queryFn: () => axios.post('').then((res) => res.data),
+  })
+
+  const sendToCheckout = useMutation({
+    mutationFn: () => axios.post('').then((res) => res.data),
+  })
+
   console.log(products)
 
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -52,9 +63,11 @@ export function useHome({ products }: HomeProps) {
   const isLastSlide = !(currentSlide === products.length - 1)
 
   return {
-    sliderRef,
+    query,
+    sendToCheckout,
     instanceRef,
     isFirstSlide,
     isLastSlide,
+    sliderRef,
   }
 }

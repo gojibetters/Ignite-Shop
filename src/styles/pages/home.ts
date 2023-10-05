@@ -80,20 +80,24 @@ export const Product = styled('div', {
     objectFit: 'cover',
   },
 
-  '&[data-background=direct]': {
-    background: 'linear-gradient(100deg, #1ea483 0%, #7465d4 100% )',
-  },
-
-  '&[data-background=inverted]': {
-    background: 'linear-gradient(100deg, #7465d4 0%, #1ea483 100% )',
-  },
-
   '&:hover': {
     boxShadow: '0px 0px 48px 0px rgba(0, 0, 0, 0.9)',
 
     footer: {
       transform: 'translateY(0%)',
       opacity: 1,
+    },
+  },
+
+  variants: {
+    backgroundFade: {
+      true: {
+        background: 'linear-gradient(100deg, #7465d4 0%, #1ea483 100% )',
+      },
+
+      false: {
+        background: 'linear-gradient(100deg, #1ea483 0%, #7465d4 100% )',
+      },
     },
   },
 })
